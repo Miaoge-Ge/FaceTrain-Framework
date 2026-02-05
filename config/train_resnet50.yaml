@@ -1,0 +1,52 @@
+model:
+  backbone: 'resnet50'
+  embedding_size: 512
+  pretrained: false
+  
+seed: 42
+
+head:
+  type: 'adaface'
+  num_classes: 85742
+  margin: 0.5
+  scale: 64.0
+
+data:
+  name: "faces_emore"
+  root: "/data/faces_emore"
+  batch_size: 256
+  num_workers: 8
+  img_size: [112, 112]
+
+training:
+  epochs: 25
+  optimizer: 'sgd'
+  lr: 0.1
+  momentum: 0.9
+  weight_decay: 5.0e-4
+  scheduler: 'multistep'
+  milestones: [10, 16, 22] # 经典调度：在 10, 16, 22 epoch 衰减
+  gamma: 0.1
+  min_lr: 1.0e-5
+  warmup_epochs: 1
+  resume: false
+  early_stop: true        
+  patience: 10            
+  monitor: 'val_accuracy'
+  mode: 'max'
+  min_delta: 0.001
+
+checkpoint:
+  save_dir: 'checkpoints/resnet50'
+  keep_last_n: 5
+
+logging:
+  log_dir: 'logs/resnet50'
+  print_freq: 100
+  tensorboard: true
+
+eval:
+  dataset: "cfp_fp"         # lfw、cfp_fp
+  bin_file: "cfp_fp.bin"
+  test_batch_size: 64
+  eval_freq: 1

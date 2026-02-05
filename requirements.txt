@@ -1,0 +1,9 @@
+torch
+torchvision
+numpy
+pyyaml
+tqdm
+pillow
+scikit-learn
+tensorboard
+mxnet
