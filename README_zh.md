@@ -152,13 +152,3 @@ pred = Predictor(
 score = pred.predict("a.jpg", "b.jpg")
 print(score)
 ```
-
-## 上传 GitHub 注意事项
-
-本项目已添加 `.gitignore` 来忽略：
-
-- 训练日志、TensorBoard 事件文件
-- checkpoint/权重文件（如 `.pth`）
-- 缓存文件（`__pycache__` 等）
-
-建议在 push 前执行一次 `git status`，确认不会误提交权重与日志。
