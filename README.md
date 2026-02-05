@@ -156,7 +156,3 @@ deterministic: true
 ```
 
 When `deterministic=true`, cuDNN benchmarking is disabled to improve reproducibility.
-
-## GitHub Upload Notes
-
-This repo is designed to avoid committing logs and model weights. See `.gitignore` before pushing.
